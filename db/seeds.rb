@@ -22,6 +22,10 @@ artwork1 = Artwork.create!(title: "Impression, sunrise", image_url: "https://upl
 artwork2 = Artwork.create!(title: "The Last Supper", image_url: "https://upload.wikimedia.org/wikipedia/commons/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg", artist_id: 1)
 artwork3 = Artwork.create!(title: "Starry Night", image_url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg", artist_id: 2)
 
-artwork_share = ArtworkShare.create!(artwork_id: 2, viewer_id: 3)
-artwork_share = ArtworkShare.create!(artwork_id: 1, viewer_id: 2)
-artwork_share = ArtworkShare.create!(artwork_id: 3, viewer_id: 1)
+artwork_share1 = ArtworkShare.create!(artwork_id: 2, viewer_id: 3)
+artwork_share2 = ArtworkShare.create!(artwork_id: 1, viewer_id: 2)
+artwork_share3 = ArtworkShare.create!(artwork_id: 3, viewer_id: 1)
+
+comment1 = Comment.create!(artwork_id: 1, author_id: 1, body: "Impression IMPRESED")
+comment2 = Comment.create!(artwork_id: 2, author_id: 2, body: "This makes me hungry")
+comment3 = Comment.create!(artwork_id: 3, author_id: 3, body: "Wow! Such stars!")
