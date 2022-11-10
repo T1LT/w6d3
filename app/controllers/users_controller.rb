@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   def index
     # render plain: "whatever you want - Nishant"
-    users = User.all 
+    if params.has_key?(:query)
+      query_string = '%' + params[:query] + '%'
+      users = User.where("username like (?)", query_string)
+    else
+      users = User.all
+    end
     render json: users
   end
 
@@ -40,6 +45,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :query)
   end
 end
