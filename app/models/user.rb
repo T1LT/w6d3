@@ -14,13 +14,15 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :artist_id,
     class_name: :Artwork,
-    dependent: :destroy
+    dependent: :destroy,
+    inverse_of: :artist
 
   has_many :shares,
     primary_key: :id,
     foreign_key: :viewer_id,
     class_name: :ArtworkShare,
-    dependent: :destroy
+    dependent: :destroy,
+    inverse_of: :viewer
 
   #This User#shared_artworks association should return the set of artworks that have been shared with that user, 
   #not the set of artworks that a user has shared with others.
