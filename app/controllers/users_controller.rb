@@ -22,18 +22,24 @@ class UsersController < ApplicationController
 
   def update
     user = User.find_by(id: params[:id])
-    user.update(user_params)
-    render json: user
+    if user.update(user_params)
+      render json: user
+    else
+      render json: user.errors.full_messages, status: 422
+    end
   end
 
   def destroy
     user = User.find_by(id: params[:id])
-    user.delete
-    redirect_to users_url
+    if user.destroy
+      redirect_to users_url
+    else
+      render json: user.errors.full_messages, status: 422
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 end

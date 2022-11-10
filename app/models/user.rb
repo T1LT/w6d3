@@ -22,6 +22,8 @@ class User < ApplicationRecord
     class_name: :ArtworkShare,
     dependent: :destroy
 
+  #This User#shared_artworks association should return the set of artworks that have been shared with that user, 
+  #not the set of artworks that a user has shared with others.
   has_many :shared_artworks,
     through: :shares,
     source: :artwork
